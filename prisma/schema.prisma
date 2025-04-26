@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite" // Using SQLite for simplicity, consider PostgreSQL for production and String[] support
+  url      = "file:./dev.db"
+}
+
+model Poem {
+  id        String    @id @default(cuid())
+  title     String
+  content   String? // Kept for potential future use, though verses are primary
+  verses    Verse[]
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt // Optional, automatically updated
+  published Boolean   @default(false)
+  tags      Tag[]     @relation("PoemTags") // Use relation for tags
+
+  @@index([authorId])
+}
+
+model Verse {
+  id        String   @id @default(cuid())
+  sadr      String // صدر البيت
+  ajz       String // عجز البيت
+  order     Int // ترتيب البيت في القصيدة
+  poem      Poem     @relation(fields: [poemId], references: [id], onDelete: Cascade)
+  poemId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([poemId])
+  @@unique([poemId, order]) // Ensure unique order within a poem
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String @unique // Tag names should be unique
+  poems Poem[] @relation("PoemTags")
+
+  @@index([name])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String // Hashed password
+  email     String?  @unique
+  name      String?
+  poems     Poem[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
