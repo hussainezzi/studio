@@ -1,7 +1,7 @@
 'use server';
 
 import prisma from '@/lib/prisma';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs'; // Use bcryptjs
 import * as z from 'zod';
 
 const signUpSchema = z.object({
@@ -48,7 +48,7 @@ export async function signUpAction(
     }
 
 
-    // Hash the password
+    // Hash the password using bcryptjs
     const hashedPassword = await bcrypt.hash(password, 10); // Salt rounds: 10
 
     // Create the user in the database

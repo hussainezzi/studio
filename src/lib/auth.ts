@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import prisma from './prisma';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs'; // Use bcryptjs
 import type { NextAuthConfig, User as NextAuthUser } from 'next-auth';
 import { JWT } from "next-auth/jwt"
 
@@ -40,6 +40,7 @@ export const config: NextAuthConfig = {
           where: { username: credentials.username as string },
         });
 
+        // Use bcryptjs.compare
         if (user && await bcrypt.compare(credentials.password as string, user.password)) {
           // Return user object without password
           return {
