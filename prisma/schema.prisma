@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite" // Using SQLite for simplicity, consider PostgreSQL for production and String[] support
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Poem {

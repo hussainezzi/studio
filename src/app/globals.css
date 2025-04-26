@@ -1,42 +1,41 @@
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 27 53% 94%; /* Desert Sand Lightened for Background */
-    --foreground: 184 100% 11%; /* Deep Teal Darkened for Text */
+    --background: 27 53% 94%;
+    --foreground: 184 100% 11%;
 
-    --card: 30 51% 81%; /* Desert Sand (#EDC9AF) */
-    --card-foreground: 184 100% 11%; /* Deep Teal */
+    --card: 30 51% 81%;
+    --card-foreground: 184 100% 11%;
 
-    --popover: 30 51% 81%; /* Desert Sand */
-    --popover-foreground: 184 100% 11%; /* Deep Teal */
+    --popover: 30 51% 81%;
+    --popover-foreground: 184 100% 11%;
 
-    --primary: 184 100% 21%; /* Deep Teal (#005F6B) */
-    --primary-foreground: 30 51% 91%; /* Lighter Desert Sand */
+    --primary: 184 100% 21%;
+    --primary-foreground: 30 51% 91%;
+    --primary-hover: 184 100% 26%;
 
-    --secondary: 184 100% 31%; /* Slightly Lighter Teal */
-    --secondary-foreground: 30 51% 91%; /* Lighter Desert Sand */
+    --secondary: 184 100% 31%;
+    --secondary-foreground: 30 51% 91%;
+    --secondary-hover: 184 100% 36%;
 
-    --muted: 27 40% 88%; /* Muted Desert Sand */
-    --muted-foreground: 184 60% 35%; /* Muted Teal */
+    --muted: 27 40% 88%;
+    --muted-foreground: 184 60% 35%;
 
-    --accent: 51 100% 50%; /* Gold (#FFD700) */
-    --accent-foreground: 184 100% 11%; /* Deep Teal for contrast on Gold */
+    --accent: 51 100% 50%;
+    --accent-foreground: 184 100% 11%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 30 30% 75%; /* Desert Sand muted */
-    --input: 30 30% 80%; /* Desert Sand slightly lighter for input */
-    --ring: 184 100% 21%; /* Deep Teal */
-
-    --chart-1: 184 100% 31%;
-    --chart-2: 51 100% 60%;
-    --chart-3: 184 80% 41%;
-    --chart-4: 51 80% 70%;
-    --chart-5: 184 60% 51%;
+    --border: 30 30% 75%;
+    --input: 30 30% 80%;
+    --ring: 184 100% 21%;
 
     --radius: 0.5rem;
 
@@ -44,56 +43,52 @@
     --sidebar-foreground: 27 53% 90%; /* Light Desert Sand for Sidebar Text */
     --sidebar-primary: 51 100% 50%; /* Gold for Sidebar Primary/Active */
     --sidebar-primary-foreground: 184 100% 11%; /* Deep Teal for text on Gold */
-    --sidebar-accent: 184 100% 26%; /* Slightly lighter Teal for Hover */
-    --sidebar-accent-foreground: 27 53% 94%; /* Lightest Desert Sand for Hover Text */
-    --sidebar-border: 184 100% 21%; /* Deep Teal for borders */
-    --sidebar-ring: 51 100% 50%; /* Gold */
+    --sidebar-accent: 184 100% 26%;
+    --sidebar-accent-foreground: 27 53% 94%;
+    --sidebar-border: 184 100% 21%;
+    --sidebar-ring: 51 100% 50%;
   }
 
   .dark {
-    /* Consider a dark theme if needed, for now using light theme values */
-    --background: 184 100% 11%; /* Deep Teal Darkened */
-    --foreground: 27 53% 94%; /* Desert Sand Lightened */
+    --background: 184 100% 8%;
+    --foreground: 27 53% 90%;
 
-    --card: 184 100% 16%; /* Darker Teal */
-    --card-foreground: 27 53% 94%; /* Light Desert Sand */
+    --card: 184 100% 18%;
+    --card-foreground: 27 53% 90%;
 
-    --popover: 184 100% 11%; /* Deep Teal Darkened */
-    --popover-foreground: 27 53% 94%; /* Light Desert Sand */
+    --popover: 184 100% 11%;
+    --popover-foreground: 27 53% 90%;
 
-    --primary: 30 51% 81%; /* Desert Sand (#EDC9AF) */
-    --primary-foreground: 184 100% 11%; /* Deep Teal */
+    --primary: 30 51% 81%;
+    --primary-foreground: 184 100% 11%;
+    --primary-hover: 30 51% 76%;
 
-    --secondary: 27 40% 70%; /* Muted Desert Sand */
-    --secondary-foreground: 184 100% 11%; /* Deep Teal */
+    --secondary: 27 40% 70%;
+    --secondary-foreground: 184 100% 11%;
+    --secondary-hover: 27 40% 65%;
 
-    --muted: 184 100% 21%; /* Deep Teal */
-    --muted-foreground: 27 53% 85%; /* Lighter Desert Sand */
+    --muted: 184 100% 21%;
+    --muted-foreground: 27 53% 85%;
 
-    --accent: 51 100% 50%; /* Gold (#FFD700) */
-    --accent-foreground: 184 100% 11%; /* Deep Teal for contrast on Gold */
+    --accent: 51 100% 50%;
+    --accent-foreground: 184 100% 11%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 184 100% 21%; /* Deep Teal */
-    --input: 184 100% 26%; /* Slightly Lighter Teal */
-    --ring: 51 100% 50%; /* Gold */
+    --border: 184 100% 21%;
+    --input: 184 100% 26%;
+    --ring: 51 100% 50%;
 
-     --chart-1: 30 51% 71%;
-     --chart-2: 51 100% 40%;
-     --chart-3: 30 61% 61%;
-     --chart-4: 51 90% 50%;
-     --chart-5: 30 71% 51%;
+    --sidebar-background: 184 100% 8%;
+    --sidebar-foreground: 27 53% 90%;
+    --sidebar-primary: 51 100% 50%;
+    --sidebar-primary-foreground: 184 100% 11%;
+    --sidebar-accent: 184 100% 16%;
+    --sidebar-accent-foreground: 27 53% 94%;
+    --sidebar-border: 184 100% 11%;
+    --sidebar-ring: 51 100% 50%;
 
-    --sidebar-background: 184 100% 8%; /* Even Darker Teal for Sidebar */
-    --sidebar-foreground: 27 53% 90%; /* Light Desert Sand for Sidebar Text */
-    --sidebar-primary: 51 100% 50%; /* Gold for Sidebar Primary/Active */
-    --sidebar-primary-foreground: 184 100% 11%; /* Deep Teal for text on Gold */
-    --sidebar-accent: 184 100% 16%; /* Darker Teal for Hover */
-    --sidebar-accent-foreground: 27 53% 94%; /* Lightest Desert Sand for Hover Text */
-    --sidebar-border: 184 100% 11%; /* Deepest Teal for borders */
-    --sidebar-ring: 51 100% 50%; /* Gold */
   }
 }
 
@@ -103,23 +98,22 @@
   }
   html {
      direction: rtl; /* Set default direction to Right-to-Left */
+     text-align: right;
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Noto Naskh Arabic', serif; /* Example Arabic font */
+    font-family: 'Noto Naskh Arabic', serif;
   }
-  /* Ensure inputs and textareas also respect RTL */
+
   input, textarea, select {
     direction: rtl;
     text-align: right;
   }
-  /* Adjust ShadCN components for RTL if necessary */
+  /* Here you can add more specific RTL adjustments for new components. */
    [dir="rtl"] .text-left { text-align: right !important; }
    [dir="rtl"] .text-right { text-align: left !important; }
    [dir="rtl"] .pl-4 { padding-right: 1rem !important; padding-left: 0 !important; }
    [dir="rtl"] .pr-4 { padding-left: 1rem !important; padding-right: 0 !important; }
-   /* Add more specific RTL adjustments as needed */
 }
 
-/* Add font import */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap');
+
