@@ -1,5 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// schema.prisma
 
 generator client {
   provider = "prisma-client-js"
@@ -7,53 +6,52 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("DATABASE_URL") // Ensure this is correctly set
 }
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  email     String?  @unique
+  name      String?
+  poems     Poem[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  id    String @id @default(cuid())
+  name  String @unique
+  poems Poem[] @relation("PoemTags")
+}
+
 
 model Poem {
   id        String    @id @default(cuid())
   title     String
-  content   String? // Kept for potential future use, though verses are primary
+  content   String?
   verses    Verse[]
   author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId  String
   createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt // Optional, automatically updated
+  updatedAt DateTime? @updatedAt
   published Boolean   @default(false)
-  tags      Tag[]     @relation("PoemTags") // Use relation for tags
+  tags      Tag[]     @relation("PoemTags")
 
   @@index([authorId])
 }
 
 model Verse {
   id        String   @id @default(cuid())
-  sadr      String // صدر البيت
-  ajz       String // عجز البيت
-  order     Int // ترتيب البيت في القصيدة
+  sadr      String
+  ajz       String
+  order     Int
   poem      Poem     @relation(fields: [poemId], references: [id], onDelete: Cascade)
   poemId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@index([poemId])
-  @@unique([poemId, order]) // Ensure unique order within a poem
-}
-
-model Tag {
-  id    String @id @default(cuid())
-  name  String @unique // Tag names should be unique
-  poems Poem[] @relation("PoemTags")
-
-  @@index([name])
-}
-
-model User {
-  id        String   @id @default(cuid())
-  username  String   @unique
-  password  String // Hashed password
-  email     String?  @unique
-  name      String?
-  poems     Poem[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  @@unique([poemId, order])
 }
