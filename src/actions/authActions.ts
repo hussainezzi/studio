@@ -28,7 +28,7 @@ export async function signUpAction(
     }
 
     const { username, password, email, name } = validation.data;
-
+    console.log(username, password, email, name)
     // Check if username already exists
     const existingUserByUsername = await prisma.user.findUnique({
       where: { username },

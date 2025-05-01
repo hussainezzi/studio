@@ -29,7 +29,7 @@ export default async function RootLayout({
     // The SessionProvider doesn't render a DOM element itself,
     // so the <html> tag can be the direct top-level element inside it.
     <SessionProvider session={session}>
-      <html lang="ar" dir="rtl"> {/* Set lang to Arabic and dir to RTL */}
+      <html lang="ar"> 
         <body className={`${notoNaskhArabic.variable} font-sans antialiased`}> {/* Use font variable */}
           <div className="flex min-h-screen flex-col">
              <AppHeader /> {/* Add the header */}
